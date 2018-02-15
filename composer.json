@@ -1,7 +1,7 @@
 {
     "name": "adamibrahim/email_confirm",
     "type": "library",
-    "description": "Laravel 5.5 Natively Email confirmation Package",
+    "description": "Laravel 5.6 Natively Email confirmation Package",
     "keywords": [
         "Laravel5.5",
         "Email confirm",

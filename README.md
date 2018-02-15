@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Laravel 5.5 Natively Email confirmation Package Using Queue to send Emails
+Laravel 5.6 Natively Email confirmation Package Using Queue to send Emails
 
 ## Structure
 
@@ -47,7 +47,7 @@ $ php artisan make:auth
 $ composer require adamibrahim/email_confirm
 ```
 
-##### If you installing at laravel 5.5 then you may go directly to Publish other wise you will need to edit composer.json and register the Service Provider
+##### If you installing at laravel 5.5 or heigher then you may go directly to Publish other wise you will need to edit composer.json and register the Service Provider
 
 ### composer.json
 
