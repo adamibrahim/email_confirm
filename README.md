@@ -1,4 +1,4 @@
-# Laravel 5.5 Email confirmation
+# Laravel 5.6 Email confirmation
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
