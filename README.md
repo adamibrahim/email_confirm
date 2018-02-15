@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Laravel 5.5 Natively Email confirmation Package
+Laravel 5.5 Natively Email confirmation Package Using Queue to send Emails
 
 ## Structure
 
@@ -154,10 +154,10 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/:vendor/:package_name.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/:vendor/:package_name.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/hostato/admin
+[link-packagist]: https://packagist.org/packages/adamibrahim/email_confirm
 [link-travis]: https://travis-ci.org/:vendor/:package_name
 [link-scrutinizer]: https://scrutinizer-ci.com/g/:vendor/:package_name/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/:vendor/:package_name
-[link-downloads]: https://packagist.org/packages/hostato/admin
-[link-author]: https://github.com/hostato
+[link-downloads]: https://packagist.org/packages/adamibrahim/email_confirm
+[link-author]: https://github.com/adamibrahim
 [link-contributors]: ../../contributors
