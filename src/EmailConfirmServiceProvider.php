@@ -15,10 +15,10 @@ class EmailConfirmServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/Controllers' => appp_path('Http/Controllers'),
+            __DIR__.'/Controllers' => app_path('Http/Controllers'),
             __DIR__.'/database' => database_path('migrations'),
-            __DIR__.'/Jobs' => appp_path(),
-            __DIR__.'/Models' => appp_path(),
+            __DIR__.'/Jobs' => app_path(),
+            __DIR__.'/Models' => app_path(),
             __DIR__.'/resources/lang' => resource_path('lang'),
             __DIR__.'/resources/views' => resource_path('views'),
             __DIR__.'/routes' => 'routes',
