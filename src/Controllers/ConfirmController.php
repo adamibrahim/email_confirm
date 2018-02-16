@@ -41,13 +41,13 @@ class ConfirmController extends Controller
 
         // check if user is not active
         if (!$user->isActive()) {
-            return redirect()->back()->with('danger', 'auth.thisUserIsNoLongerActive');
+            return redirect()->back()->with('danger', trans('auth.thisUserIsNoLongerActive'));
         }
 
         // check if user email confirmed
         if ($user->isConfirmed()) {
             return redirect()->route('login')
-                ->with('success', 'auth.yourEmailIsConfirmedYouMayLogin');
+                ->with('success', trans('auth.yourEmailIsConfirmedYouMayLogin'));
         }
 
         $user->sendConfirmationEmail(route('confirm.token', $user->confirm_token));

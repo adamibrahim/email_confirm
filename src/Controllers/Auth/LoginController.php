@@ -59,18 +59,18 @@ class LoginController extends Controller
         }
         // check if email not exist
         if (!$user=User::getUserByEmail($request->email)) {
-            return redirect()->back()->with('danger', 'auth.thisEmailNotFound');
+            return redirect()->back()->with('danger', trans( 'auth.thisEmailNotFound'));
         }
 
         // check if user is not active
         if (!$user->isActive()) {
-            return redirect()->back()->with('danger', 'auth.thisUserIsNoLongerActive');
+            return redirect()->back()->with('danger', trans('auth.thisUserIsNoLongerActive'));
         }
 
         // check if user email not confirmed
         if (!$user->isConfirmed()) {
             return redirect()->route('confirm.email', $user->id)
-                ->with('warning', 'auth.needToConfirmYourEmailBeforeLogin');
+                ->with('warning', trans('auth.needToConfirmYourEmailBeforeLogin'));
         }
 
         if ($this->attemptLogin($request)) {
