@@ -9,15 +9,6 @@
 
 Laravel 5.6 Natively Email confirmation Package Using Queue to send Emails
 
-## Structure
-
-Sorce folders structure
-
-```
-src/
-tests/
-
-```
 ## Demo
 
 You can see working [demo](https://www.emailconfirm.hostato.com)

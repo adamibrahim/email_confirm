@@ -57,10 +57,20 @@ class LoginController extends Controller
 
             return $this->sendLockoutResponse($request);
         }
-        // check if user is active
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password, 'active' => 1, 'confirmed' => 1])){
-            $user = User::where('email', $request->email)->firstOrFail();
-                return redirect()->route('confirm.email', $user->id);
+        // check if email not exist
+        if (!$user=User::getUserByEmail($request->email)) {
+            return redirect()->back()->with('danger', 'auth.thisEmailNotFound');
+        }
+
+        // check if user is not active
+        if (!$user->isActive()) {
+            return redirect()->back()->with('danger', 'auth.thisUserIsNoLongerActive');
+        }
+
+        // check if user email not confirmed
+        if (!$user->isConfirmed()) {
+            return redirect()->route('confirm.email', $user->id)
+                ->with('warning', 'auth.needToConfirmYourEmailBeforeLogin');
         }
 
         if ($this->attemptLogin($request)) {

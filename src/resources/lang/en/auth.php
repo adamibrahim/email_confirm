@@ -15,7 +15,7 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'needToActivateYourEmail' => 'Error ! You need to activate your email.',
+    'needToConfirmYourEmailBeforeLogin' => 'Error !You need to Confirm your email before login.',
     'emailConfirmation' => 'Email Confirmation!',
     'anEmailHasBeenSentTo' => 'An Email has been sent to',
     'pleaseCheckAndClickTheConfirmationLink' => 'Please check your email and click the confirmation link',
@@ -31,4 +31,6 @@ return [
     'copyAndPasteTheURLBelowIntoYourWebBrowser' => 'Copy and paste the URL below in to your web browser',
     'regards' => 'Regards',
     'accountCreatedNeedToConfirmEmail' => 'Your account has been successfully created! need to confirm your email',
+    'thisUserIsNoLongerActive' => 'Error! This user is no longer active.',
+    'thisEmailNotFound' => 'Error! Email not found.',
 ];

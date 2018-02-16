@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'confirm_token', 'status',
+        'name', 'email', 'password', 'confirm_token', 'confirmed', 'active',
     ];
 
     /**
@@ -41,5 +41,31 @@ class User extends Authenticatable
         $this->notify($job);
     }
 
+    /*
+     * Check if user email is confirmed
+     */
+    public function isConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /*
+     * Check if user Active
+     */
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * validate Email
+     *
+     * @param  $email
+     * @return object
+     */
+    public static function getUserByEmail($email)
+    {
+        return self::where('email', $email)->first();
+    }
 
 }

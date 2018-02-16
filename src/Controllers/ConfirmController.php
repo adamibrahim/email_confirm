@@ -38,10 +38,18 @@ class ConfirmController extends Controller
     public function resendConfirm(Request $request)
     {
         $user = User::findOrFail($request->id);
-        if ($user->confirmed > 0 ) {
-            return redirect()
-                ->route('login')->with('warning', trans('auth.yourEmailIsConfirmedYouMayLogin'));
+
+        // check if user is not active
+        if (!$user->isActive()) {
+            return redirect()->back()->with('danger', 'auth.thisUserIsNoLongerActive');
         }
+
+        // check if user email confirmed
+        if ($user->isConfirmed()) {
+            return redirect()->route('login')
+                ->with('success', 'auth.yourEmailIsConfirmedYouMayLogin');
+        }
+
         $user->sendConfirmationEmail(route('confirm.token', $user->confirm_token));
         return redirect()
             ->back()
