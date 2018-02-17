@@ -3,6 +3,7 @@
 namespace Adam\EmailConfirm;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class EmailConfirmServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,7 @@ class EmailConfirmServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         $this->publishes([
             __DIR__.'/Controllers' => app_path('Http/Controllers'),
             __DIR__.'/database' => database_path('migrations'),
