@@ -5,15 +5,29 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-                <div class="card-header">{{ trans('auth.login') }}</div>
+                <div class="card-header">{{ trans('auth.register') }}</div>
 
                 <div class="card-body">
-                    @include('layouts.partials.alerts')
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ trans('auth.emailAddress') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ trans('auth.name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" name="name" value="{{ old('name') }}"
+                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}">
+
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('auth.emailAddress') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="text" name="email" value="{{ old('email') }}"
@@ -31,8 +45,8 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('auth.password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password"  name="password"
-                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                <input id="password" type="password" name="password"
+                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" >
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -43,25 +57,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        {{ trans('auth.rememberMe') }}
-                                    </label>
-                                </div>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">
+                                {{ trans('auth.confirm') }} {{ trans('auth.password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ trans('auth.login') }}
+                                    {{ trans('auth.register') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ trans('auth.forgotYourPassword') }}
-                                </a>
                             </div>
                         </div>
                     </form>

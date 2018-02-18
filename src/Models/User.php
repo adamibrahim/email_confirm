@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Notifications\ConfirmEmail;
-
+use App\Notifications\ForgotPasswordEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -29,17 +29,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-    /*
-     * Send Email confirmation
-     * @param $route
-     */
-    public function sendConfirmationEmail($route)
-    {
-        $job = new ConfirmEmail($this);
-        $job->setRoute($route);
-        $this->notify($job);
-    }
 
     /*
      * Check if user email is confirmed
@@ -68,4 +57,28 @@ class User extends Authenticatable
         return self::where('email', $email)->first();
     }
 
+    /*
+     * Send Email confirmation
+     * @param $route
+     */
+    public function sendConfirmationEmail($route)
+    {
+        $job = new ConfirmEmail($this);
+        $job->setRoute($route);
+        $this->notify($job);
+    }
+
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $job = new ForgotPasswordEmail($this);
+        $job->setRoute(route('password.reset', $token));
+        $this->notify($job);
+    }
 }

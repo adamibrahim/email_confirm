@@ -5,18 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-                <div class="card-header">{{ trans('auth.login') }}</div>
+                <div class="card-header">{{ trans('auth.reset') }} {{ trans('auth.password') }}</div>
 
                 <div class="card-body">
                     @include('layouts.partials.alerts')
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('password.request') }}">
                         @csrf
 
+                        <input type="hidden" name="token" value="{{ $token }}">
+
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ trans('auth.emailAddress') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('auth.emailAddress') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" name="email" value="{{ old('email') }}"
+                                <input id="email" type="text"  name="email" value="{{ $email or old('email') }}"
                                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" >
 
                                 @if ($errors->has('email'))
@@ -32,7 +34,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password"  name="password"
-                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" >
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -43,25 +45,25 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        {{ trans('auth.rememberMe') }}
-                                    </label>
-                                </div>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">
+                                {{ trans('auth.confirm') }} {{ trans('auth.password') }}</label>
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password"  name="password_confirmation"
+                                       class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" >
+
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ trans('auth.login') }}
+                                    {{ trans('auth.reset') }} {{ trans('auth.password') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ trans('auth.forgotYourPassword') }}
-                                </a>
                             </div>
                         </div>
                     </form>
