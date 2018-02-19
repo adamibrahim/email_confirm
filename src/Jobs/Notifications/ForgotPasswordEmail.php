@@ -47,7 +47,7 @@ class ForgotPasswordEmail extends Notification implements ShouldQueue
     {
         return (new MailMessage)
         ->subject(trans('auth.resetYourPassword'))
-        ->Greeting(trans('auth.greetingsFrom'))
+        ->Greeting(implode(' ', [trans('auth.greetingsFrom'), config('app.name')  ]))
         ->line(trans('auth.followTheBelowLinkToResetYourPassword'))
         ->action(trans('auth.resetYourPassword'), $this->route)
         ->markdown('notifications.auth-notifications',['user'=> $this->user]);
