@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Adam\EmailConfirm\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view()->first(['home', 'emailConfirm::home']);
     }
 }

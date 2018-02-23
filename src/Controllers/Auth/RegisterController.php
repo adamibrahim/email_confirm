@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Adam\EmailConfirm\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
@@ -40,6 +40,16 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view()->first(['auth.register', 'emailConfirm::auth.register']);
     }
 
     /**
@@ -90,6 +100,6 @@ class RegisterController extends Controller
 
         return redirect()
             ->route('confirm.email', $user->id )
-            ->with('success', trans('auth.accountCreatedNeedToConfirmEmail'));
+            ->with('success', trans('emailConfirm::auth.accountCreatedNeedToConfirmEmail'));
     }
 }

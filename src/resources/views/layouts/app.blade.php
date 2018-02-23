@@ -34,8 +34,8 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ trans('auth.login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ trans('auth.register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ trans('emailConfirm::auth.login') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ trans('emailConfirm::auth.register') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,7 +45,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ trans('auth.logout') }}
+                                        {{ trans('emailConfirm::auth.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

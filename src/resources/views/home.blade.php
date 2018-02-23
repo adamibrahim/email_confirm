@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('emailConfirm::layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-                <div class="card-header">{{trans('auth.profile')}}</div>
+                <div class="card-header">{{trans('emailConfirm::auth.profile')}}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ trans('auth.youAreLoggedIn') }}
+                    {{ trans('emailConfirm::auth.youAreLoggedIn') }}
                 </div>
             </div>
         </div>

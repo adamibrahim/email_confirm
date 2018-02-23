@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace Adam\ConfirmEmail\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -46,12 +46,12 @@ class ConfirmEmail extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject(trans('auth.confirmYourEmail'))
-            ->Greeting(implode(' ', [trans('auth.greetingsFrom'), config('app.name')  ]))
-            ->line(implode(' ', [trans('auth.please'), trans('auth.confirmYourEmail')]))
-            ->action(trans('auth.confirmYourEmail'), $this->route)
-            ->line(trans('auth.thankYouForUsingOurApplication'))
-            ->markdown('notifications.auth-notifications',['user'=> $this->user]);
+            ->subject(trans('emailConfirm::auth.confirmYourEmail'))
+            ->Greeting(implode(' ', [trans('emailConfirm::auth.greetingsFrom'), config('app.name')  ]))
+            ->line(implode(' ', [trans('emailConfirm::auth.please'), trans('emailConfirm::auth.confirmYourEmail')]))
+            ->action(trans('emailConfirm::auth.confirmYourEmail'), $this->route)
+            ->line(trans('emailConfirm::auth.thankYouForUsingOurApplication'))
+            ->markdown('emailConfirm::notifications.auth-notifications',['user'=> $this->user]);
     }
 
     /**

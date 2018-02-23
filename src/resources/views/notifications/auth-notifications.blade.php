@@ -35,14 +35,14 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-{{trans('auth.regards')}},<br>{{ config('app.name') }}
+{{trans('emailConfirm::auth.regards')}},<br>{{ config('app.name') }}
 @endif
 
 {{-- Subcopy --}}
 @isset($actionText)
 @component('mail::subcopy')
-    {{trans('auth.ifYouAreHavingTroubleClickingThe')}} "{{ $actionText }}" {{trans('auth.button')}},
-    {{trans('auth.copyAndPasteTheURLBelowIntoYourWebBrowser')}}<br>
+    {{trans('emailConfirm::auth.ifYouAreHavingTroubleClickingThe')}} "{{ $actionText }}" {{trans('emailConfirm::auth.button')}},
+    {{trans('emailConfirm::auth.copyAndPasteTheURLBelowIntoYourWebBrowser')}}<br>
     [{{ $actionUrl }}]({{ $actionUrl }})
 @endcomponent
 @endisset

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace Adam\ConfirmEmail\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -46,11 +46,11 @@ class ForgotPasswordEmail extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->subject(trans('auth.resetYourPassword'))
-        ->Greeting(implode(' ', [trans('auth.greetingsFrom'), config('app.name')  ]))
-        ->line(trans('auth.followTheBelowLinkToResetYourPassword'))
-        ->action(trans('auth.resetYourPassword'), $this->route)
-        ->markdown('notifications.auth-notifications',['user'=> $this->user]);
+        ->subject(trans('emailConfirm::auth.resetYourPassword'))
+        ->Greeting(implode(' ', [trans('emailConfirm::auth.greetingsFrom'), config('app.name')  ]))
+        ->line(trans('emailConfirm::auth.followTheBelowLinkToResetYourPassword'))
+        ->action(trans('emailConfirm::auth.resetYourPassword'), $this->route)
+        ->markdown('emailConfirm::notifications.auth-notifications',['user'=> $this->user]);
     }
 
     /**

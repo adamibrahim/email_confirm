@@ -26,12 +26,6 @@ $ laravel new yourappname
 - QUEUE_DRIVER=database
 - Email configuration 
 
-#####  Laravel Auth
-
-``` bash
-$ php artisan make:auth
-```
-
 ##### Install the package Via Composer
 
 ``` bash
@@ -61,9 +55,17 @@ Adam\EmailConfirm\EmailConfirmServiceProvider::class,
 ### Publishing
 
 run this command
+####This will overwrite your User.php model 
+``` bash
+
+$ php artisan vendor:publish --tag=emailConfirm --force
+```
+### Database Migrating
+
+run the Artisan migration command 
 
 ``` bash
-$ php artisan vendor:publish --provider="Adam\EmailConfirm\EmailConfirmServiceProvider" --force
+$ php artisan migrate
 ```
 
 ### Job Queues
@@ -75,41 +77,6 @@ however if you don't wish to use it you can change at your .env file
 QUEUE_DRIVER=sync
 ```
 
-on the server you need to make sure the queue is working by running this command 
-
-``` bash
-$ php artisan queue:work
-```
-
-
-### Database Migrating
-
-run the Artisan migration command 
-
-``` bash
-$ php artisan migrate
-```
-
-### Artisan Migrate Error
-
-If you receive this SQL Error: 
-######"SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long;", 
-then add this to your 
-######app/Providers/AppServiceProvider.php:
-
-``` bash
-Add before class name:
-use Illuminate\Support\Facades\Schema;
-
-Add inside class
-  public function boot()
-  {
-          Schema::defaultStringLength(191);
-  }
-Then run 
-$ php artisan migrate:fresh
-
-```
 
 ## Change log
 

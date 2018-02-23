@@ -13,8 +13,6 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'needToConfirmYourEmailBeforeLogin' => 'Error !You need to Confirm your email before login.',
     'emailConfirmation' => 'Email Confirmation!',
     'anEmailHasBeenSentTo' => 'An Email has been sent to',
@@ -51,6 +49,4 @@ return [
     'thankYouForUsingOurApplication' => 'Thank you for using out application!',
     'resetYourPassword' => 'Reset your password',
     'followTheBelowLinkToResetYourPassword' => 'Follow the below link to reset your password',
-    'logins' => '',
-    'logins' => '',
 ];

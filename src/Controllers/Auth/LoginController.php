@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Adam\EmailConfirm\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -39,6 +39,18 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return view()->first(['auth.login', 'emailConfirm::auth.login']);
+    }
+
+
     /**
      * Handle a login request to the application.
      *
@@ -64,13 +76,13 @@ class LoginController extends Controller
 
         // check if user is not active
         if (!$user->isActive()) {
-            return redirect()->back()->with('danger', trans('auth.thisUserIsNoLongerActive'));
+            return redirect()->back()->with('danger', trans('emailConfirm::auth.thisUserIsNoLongerActive'));
         }
 
         // check if user email not confirmed
         if (!$user->isConfirmed()) {
             return redirect()->route('confirm.email', $user->id)
-                ->with('warning', trans('auth.needToConfirmYourEmailBeforeLogin'));
+                ->with('warning', trans('emailConfirm::auth.needToConfirmYourEmailBeforeLogin'));
         }
 
         if ($this->attemptLogin($request)) {

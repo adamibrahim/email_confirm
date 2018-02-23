@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Adam\EmailConfirm\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
 
 class ConfirmController extends Controller
@@ -25,7 +26,8 @@ class ConfirmController extends Controller
     public function index($id)
     {
         $user = User::findOrFail($id);
-        return view('auth.confirm-email')
+        return
+            view()->first(['auth.confirm-email', 'emailConfirm::auth.confirm-email'])
             ->with('user', $user);
     }
 
@@ -41,19 +43,19 @@ class ConfirmController extends Controller
 
         // check if user is not active
         if (!$user->isActive()) {
-            return redirect()->back()->with('danger', trans('auth.thisUserIsNoLongerActive'));
+            return redirect()->back()->with('danger', trans('emailConfirm::auth.thisUserIsNoLongerActive'));
         }
 
         // check if user email confirmed
         if ($user->isConfirmed()) {
             return redirect()->route('login')
-                ->with('success', trans('auth.yourEmailIsConfirmedYouMayLogin'));
+                ->with('success', trans('emailConfirm::auth.yourEmailIsConfirmedYouMayLogin'));
         }
 
         $user->sendConfirmationEmail(route('confirm.token', $user->confirm_token));
         return redirect()
             ->back()
-            ->with('success', trans('auth.resentSuccess'));
+            ->with('success', trans('emailConfirm::auth.resentSuccess'));
     }
 
     /**
@@ -69,6 +71,6 @@ class ConfirmController extends Controller
         $user->confirmed = true;
         $user->save();
         return redirect()->route('login')
-            ->with('success', trans('auth.yourEmailIsConfirmedYouMayLogin'));
+            ->with('success', trans('emailConfirm::auth.yourEmailIsConfirmedYouMayLogin'));
     }
 }
