@@ -21,7 +21,7 @@ You can see working [demo](https://www.emailconfirm.hostato.com)
 $ laravel new yourappname
 ```
 
-##### Create and configure .env file
+##### Create / configure .env file
 - database access
 - QUEUE_DRIVER=database
 - Email configuration 
@@ -32,9 +32,9 @@ $ laravel new yourappname
 $ composer require adamibrahim/email_confirm
 ```
 
-##### If you installing at laravel 5.5 or heigher then you may go directly to Publish other wise you will need to edit composer.json and register the Service Provider
+###### If you installing at laravel 5.5 or higher then you may go directly to Publish other wise you will need to edit composer.json and register the Service Provider
 
-### composer.json
+##### composer.json
 
 Add this code to your composer.json under the autoload at your main directory
 
@@ -44,7 +44,7 @@ Add this code to your composer.json under the autoload at your main directory
         }
 ```
 
-### Service Provider
+##### Service Provider
 
 At file config/app.php register service provider under * Package Service Providers...
 
@@ -52,15 +52,15 @@ At file config/app.php register service provider under * Package Service Provide
 Adam\EmailConfirm\EmailConfirmServiceProvider::class,
 ```
 
-### Publishing
+##### Publishing
 
-##### This will overwrite your User.php model 
+###### This will overwrite your User.php model 
 
 ``` bash
 $ php artisan vendor:publish --tag=emailConfirm --force
 ```
 
-### Database Migrating
+##### Database Migrating
 
 run the Artisan migration command 
 
@@ -68,7 +68,7 @@ run the Artisan migration command
 $ php artisan migrate
 ```
 
-### Job Queues
+##### Job Queues
 
 I'm Using Queues to send emails (speed up the app) 
 however if you don't wish to use it you can change at your .env file
