@@ -54,7 +54,7 @@ Adam\EmailConfirm\EmailConfirmServiceProvider::class,
 
 ### Publishing
 
-#####This will overwrite your User.php model 
+##### This will overwrite your User.php model 
 
 ``` bash
 $ php artisan vendor:publish --tag=emailConfirm --force
