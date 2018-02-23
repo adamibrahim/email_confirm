@@ -71,7 +71,7 @@ class LoginController extends Controller
         }
         // check if email not exist
         if (!$user=User::getUserByEmail($request->email)) {
-            return redirect()->back()->with('danger', trans( 'auth.thisEmailNotFound'));
+            return redirect()->back()->with('danger', trans( 'emailConfirm::auth.thisEmailNotFound'));
         }
 
         // check if user is not active
