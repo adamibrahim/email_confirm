@@ -17,4 +17,5 @@ Route::group(['middleware' => ['web']], function() {
     Route::post('password/email', 'Adam\EmailConfirm\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('password/reset/{token}', 'Adam\EmailConfirm\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'Adam\EmailConfirm\Controllers\Auth\ResetPasswordController@reset');
+    Route::get('/home', 'Adam\EmailConfirm\Controllers\HomeController@index')->name('home');
 });
