@@ -16,6 +16,7 @@ class EmailConfirmServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        $this->loadMigrationsFrom( __DIR__.'/database');
         $this->loadRoutesFrom( __DIR__.'/routes/auth.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'emailConfirm');
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'emailConfirm');
