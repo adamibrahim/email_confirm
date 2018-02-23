@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Adam\ConfirmEmail\Notifications\ConfirmEmail;
-use Adam\ConfirmEmail\Notifications\ForgotPasswordEmail;
+use Adam\EmailConfirm\Notifications\ConfirmEmail;
+use Adam\EmailConfirm\Notifications\ForgotPasswordEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

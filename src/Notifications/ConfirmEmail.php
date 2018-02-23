@@ -1,6 +1,6 @@
 <?php
 
-namespace Adam\ConfirmEmail\Notifications;
+namespace Adam\EmailConfirm\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
